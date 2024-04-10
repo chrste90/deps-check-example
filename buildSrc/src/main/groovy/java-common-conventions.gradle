@@ -1,0 +1,31 @@
+plugins {
+    id 'application'
+    id 'idea'
+    id 'org.owasp.dependencycheck'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyCheck {
+    format = "ALL"
+
+    data {
+        directory = layout.buildDirectory.dir('owasp-data').get().asFile
+        connectionString = "jdbc:postgresql://<connection>"
+        driver = "org.postgresql.Driver"
+        username = "<user>"
+        password = "<password>"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

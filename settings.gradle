@@ -1,0 +1,3 @@
+rootProject.name = 'app-sb-libraries'
+include 'submodule'
+

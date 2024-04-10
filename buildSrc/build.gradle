@@ -1,0 +1,12 @@
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.postgresql:postgresql:42.6.0'
+    implementation 'org.owasp:dependency-check-gradle:8.2.1'
+}
