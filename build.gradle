@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'org.owasp.dependencycheck'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.postgresql:postgresql:42.6.0'
+    implementation 'org.owasp:dependency-check-gradle:8.2.1'
+}
+
+dependencyCheck {
+    format = "ALL"
+
+    data {
+        directory = layout.buildDirectory.dir('owasp-data').get().asFile
+        connectionString = "jdbc:postgresql://<connection>"
+        driver = "org.postgresql.Driver"
+        username = "<user>"
+        password = "<password>"
+    }
+}
